@@ -59,13 +59,15 @@ public class IoHandler {
         for (String s: scanner.nextLine().split(" ")) {
             int el = inputMap.getOrDefault(s, -1);
 
-            if (el == -1 || i > 3) {
+            if (el == -1 || i > 3)
                 throw new RuntimeException("");
-            }
 
             arr[i] = el;
             ++i;
         }
+
+        if (i != 4)
+            throw new RuntimeException("");
 
         return arr;
     }
@@ -75,6 +77,7 @@ public class IoHandler {
 
         BufferedWriter out = new BufferedWriter(new FileWriter(url));
 
+        out.write(String.format("%d solutions found.\n", exprs.size()));
         for (String expr : exprs) {
             out.write(expr);
             out.newLine();
